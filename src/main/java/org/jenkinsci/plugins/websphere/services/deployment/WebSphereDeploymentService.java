@@ -241,6 +241,13 @@ public class WebSphereDeploymentService extends AbstractDeploymentService {
         } else {        	
         	preferences.put(AppConstants.APPDEPL_RELOADINTERVAL, new Integer(15));
         }
+        if(artifact.isEjbDeploy()) {
+            Hashtable<String, Object> ejbOptions = new Hashtable<String, Object>();
+            ejbOptions.put(AppConstants.APPDEPL_DEPLOYEJB_VALIDATE_OPTION, Boolean.TRUE);
+
+            preferences.put(AppConstants.APPDEPL_DEPLOYEJB_CMDARG, Boolean.TRUE);
+            preferences.put(AppConstants.APPDEPL_DEPLOYEJB_OPTIONS, ejbOptions);
+        }
         if(StringUtils.trimToNull(artifact.getAppName()) != null) {
         	preferences.put(AppConstants.APPDEPL_APPNAME, artifact.getAppName());
         }

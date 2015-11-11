@@ -17,6 +17,7 @@ public class Artifact {
     private boolean precompile;
     private boolean jspReloading;
     private boolean reloading;
+    private boolean ejbDeploy;
     private String installPath;
     private String classLoaderOrder;
     private String classLoaderPolicy;
@@ -80,6 +81,14 @@ public class Artifact {
 	public void setJspReloading(boolean jspReloading) {
 		this.jspReloading = jspReloading;
 	}
+
+    public boolean isEjbDeploy() {
+        return ejbDeploy;
+    }
+
+    public void setEjbDeploy(boolean ejbDeploy) {
+        this.ejbDeploy = ejbDeploy;
+    }
 
 	public boolean isPrecompile() {
         return precompile;

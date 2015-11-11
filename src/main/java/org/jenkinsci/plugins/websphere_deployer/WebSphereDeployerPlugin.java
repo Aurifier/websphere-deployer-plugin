@@ -59,6 +59,7 @@ public class WebSphereDeployerPlugin extends Notifier {
     private final boolean distribute;
     private final boolean rollback;
     private final boolean unstableDeploy;
+    private final boolean ejbDeploy;
     private final WebSphereSecurity security;
 
     @DataBoundConstructor
@@ -81,6 +82,7 @@ public class WebSphereDeployerPlugin extends Notifier {
                                    boolean distribute,
                                    boolean rollback,
                                    boolean unstableDeploy,
+                                   boolean ejbDeploy,
                                    String classLoaderPolicy,
                                    String classLoaderOrder) {
     	this.context = context;
@@ -100,6 +102,7 @@ public class WebSphereDeployerPlugin extends Notifier {
         this.distribute = distribute;
         this.rollback = rollback;
         this.unstableDeploy = unstableDeploy;
+        this.ejbDeploy = ejbDeploy;
         this.security = security;
         this.classLoaderPolicy = classLoaderPolicy;
         this.classLoaderOrder = classLoaderOrder;
@@ -156,6 +159,10 @@ public class WebSphereDeployerPlugin extends Notifier {
 
     public boolean isUnstableDeploy() {
         return unstableDeploy;
+    }
+
+    public boolean isEjbDeploy() {
+        return ejbDeploy;
     }
 
     public String getIpAddress() {
@@ -355,6 +362,7 @@ public class WebSphereDeployerPlugin extends Notifier {
         artifact.setJspReloading(reloading);
         artifact.setDistribute(distribute);
         artifact.setPrecompile(isPrecompile());
+        artifact.setEjbDeploy(ejbDeploy);
         artifact.setSourcePath(new File(path.getRemote()));
         if(StringUtils.trimToNull(applicationName) != null) {
         	artifact.setAppName(applicationName);
